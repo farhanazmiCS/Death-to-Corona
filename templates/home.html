@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home {% endblock %}
+
+<body>
+
+  {% block content %}
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="/static/equip.jpg" alt="Self-Diagnose">
+            <div class="carousel-caption d-sm d-lg-block">
+              <h2 style="color: white">Act Early.</h2>
+              <a class="button" href="/riskassessment">
+                <button type="button" class="btn btn-dark btn-lg" style="background-color: #001a4d">Check your risk level for COVID.</button>
+              </a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="/static/vaccine.jpeg" alt="Get Tested">
+            <div class="carousel-caption d-sm d-lg-block">
+              <h2 style="color: white" class="vax">Get Vaccinated.</h2>
+              <a class="button" href="/getvaccinated">
+                <button type="button" class="btn btn-dark btn-lg" style="background-color: #001a4d">See where you can get vaccinated.</button>
+              </a>
+            </div>
+        </div>
+        <!-- Back Arrow -->
+        <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden"></span>
+        </a>
+        <!-- Next Arrow -->
+        <a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden"></span>
+        </a>
+      </div>
+    </div>
+    <!-- Section: Features v.1 -->
+    <section class="text-center my-5">
+      <!-- Section heading -->
+      <h2 class="h2-responsive font-weight-bold my-5">Stay safe.</h2>
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4">
+                <span style="font-size: 3em; color: #001a4d;">
+                  <i class="fas fa-hands-wash"></i>
+                </span>
+                <h4 class="font-weight-bold my-4">Wash your hands frequently.</h4>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-4">
+                <span style="font-size: 3em; color: #001a4d;">
+                  <i class="fas fa-head-side-mask"></i>
+                </span>
+                <h4 class="font-weight-bold my-4">Wear a mask when going out.</h4>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-4">
+                <span style="font-size: 3em; color: #001a4d;">
+                  <i class="fas fa-people-arrows"></i>
+                </span>
+                <h4 class="font-weight-bold my-4">Keep a safe distance.</h4>
+            </div>
+        </div>
+    </section>
+  {% endblock %}
+</body>

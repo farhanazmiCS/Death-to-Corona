@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block title %} High Risk {% endblock %}
+
+<body>
+  {% block content %}
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+          <span style="font-size: 18em; color: red; text-align: center">
+              <i class="fas fa-exclamation-circle"></i>
+          </span>
+          <h1 class="classification" style="text-align: center">High Risk</h1>
+          <div class="text" style="text-align: center">
+            <h5>Stay at home!</h5>
+            <h5><a href="https://www.gov.sg/article/steps-to-take-when-youre-unwell" style="text-decoration: none">Visit this website for more details.</a></h5>
+          </div>
+      </div>
+    </div>
+  {% endblock %}
+</body>

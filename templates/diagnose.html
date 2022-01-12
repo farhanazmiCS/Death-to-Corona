@@ -1,0 +1,199 @@
+{% extends 'layout.html' %}
+
+{% block title %} Risk Assessment {% endblock %}
+
+    <body>
+        {% block content %}
+            <div class="container">
+                <h1 style="font-weight: bold">Risk Assessment</h1>
+                <h5>Take the 1 minute risk-assessment to determine your risk of the coronavirus.</h5>
+            </div>
+            <div class="container">
+                <form class="needs-validation" action="/riskassessment" method="post" id="testform" novalidate>
+                <div class="form-group">
+                    <h3>Q1. What is your age group?</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="age" value="child" id="child" required>
+                        <label class="form-check-label" for="child">Less than 10 years old</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="age" value="youth" id="youth">
+                        <label class="form-check-label" for="youth">11 - 30 years old</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="age" value="adult" id="adult">
+                        <label class="form-check-label" for="adult">31 - 50 years old</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="age" value="senior" id="senior">
+                        <label class="form-check-label" for="senior">Greater than 50 years old</label>
+                        <br>
+                        <div class="invalid-feedback" style="font-size: large">
+                            Please select one of these options.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Q2. Do you have any undergoing or past medical condition (such as diabetes or heart disease) that affects your immune system?</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="medical" value="yes" id="yes" required>
+                        <label class="form-check-label" for="yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="medical" value="no" id="no">
+                        <label class="form-check-label" for="no">No</label>
+                        <br>
+                        <div class="invalid-feedback" style="font-size: large">
+                            Please select one of these options.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Q3. What is your gender?</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="male" id="male" required>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" value="female" id="female">
+                        <label class="form-check-label" for="female">Female</label>
+                        <br>
+                        <div class="invalid-feedback" style="font-size: large">
+                            Please select one of these options.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Q4. Have you travelled overseas or have been in contact with a COVID infected person for the past 14 days?</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="travel" value="yes" id="yes" required>
+                        <label class="form-check-label" for="yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="travel" value="no" id="no">
+                        <label class="form-check-label" for="no">No</label>
+                        <br>
+                        <div class="invalid-feedback" style="font-size: large">
+                            Please select one of these options.
+                        </div>
+                    </div>
+                </div>
+                <div class="check-symptoms">
+                    <h3>Q5. Have you developed any of the following symptoms for the past 14 days? (You may select more than one)</h3>
+                    <p>Select the last box if you have no symptoms developed.</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="runningnose" id="runningnose">
+                        <label class="form-check-label" for="runningnose">Running Nose</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="sorethroat" id="sorethroat">
+                        <label class="form-check-label" for="sorethroat">Sore Throat</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="cough" id="cough">
+                        <label class="form-check-label" for="cough">Cough and/or Phlegm</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="nosmell" id="nosmell">
+                        <label class="form-check-label" for="nosmell">Loss of taste or smell</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="breathe" id="breathe">
+                        <label class="form-check-label" for="breathe">Breathing difficulty</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="symptoms" value="none" id="none">
+                        <label class="form-check-label" for="none">No Symptoms</label>
+                    </div>
+                    <!-- jquery script for preventing users to pick both "none" and "symptoms" -->
+                    <!-- src: https://stackoverflow.com/questions/22763965/jquery-to-disable-checkbox-if-another-is-checked -->
+                    <script>
+
+                        // Select checkboxes used to control/toggle disable of target checkboxes
+                        var checkboxes_symptoms = $("#runningnose, #sorethroat, #cough, #nosmell, #breathe");
+                        var checkbox_none = $("#none");
+
+                        checkboxes_symptoms.on('click', check);
+                        checkbox_none.on('click', check);
+
+                        function check()
+                        {
+                            // if at least one checkbox in selected checkboxes is checked then
+                            // disable target checkboxes
+                            if($(checkboxes_symptoms).is(':checked'))
+                            {
+                                $("#none").prop('disabled', true);
+                            }
+                            else if ($(checkboxes_symptoms).not(':checked'))
+                            {
+                                $("#none").prop('disabled', false);
+                            }
+                            if($(checkbox_none).is(':checked'))
+                            {
+                                $("#runningnose").prop('disabled', true);
+                                $("#sorethroat").prop('disabled', true);
+                                $("#cough").prop('disabled', true);
+                                $("#nosmell").prop('disabled', true);
+                                $("#breathe").prop('disabled', true);
+                            }
+                            else if ($(checkbox_none).not(':checked'))
+                            {
+                                $("#runningnose").prop('disabled', false);
+                                $("#sorethroat").prop('disabled', false);
+                                $("#cough").prop('disabled', false);
+                                $("#nosmell").prop('disabled', false);
+                                $("#breathe").prop('disabled', false);
+                            }
+
+                        }
+
+                        // To prevent submission of checkbox form prior to completion
+                        //dom ready handler
+                        jQuery(function ($) {
+                        //form submit handler
+                        $('#testform').submit(function (e) {
+                        //check atleat 1 checkbox is checked
+                        if ($('[name="symptoms"]:checked').length < 1)
+                        {
+                            //prevent the default form submit if it is not checked
+                            e.preventDefault();
+
+                        }
+                        });
+                        });
+
+                    </script>
+                </div>
+                <!-- Submit button -->
+                <div class="container">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-dark" type="submit" style="background-color: #001a4d">Submit</button>
+                    </div>
+                </div>
+                <!-- src: https://getbootstrap.com/docs/5.0/forms/validation/ -->
+                <script>
+
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('.needs-validation:not(.check-symptoms)');
+
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                    }, false);
+                    });
+                    })();
+                </script>
+                </form>
+            </div>
+      {% endblock %}
+    </body>
+</html>

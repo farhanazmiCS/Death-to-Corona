@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.0/ -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <!-- https://favicon.io/ -->
+        <link href="/static/favicon.ico" rel="icon">
+        <!-- link to styles.css -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- link to font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+
+        <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+        <!-- http://getbootstrap.com/docs/5.0/ -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+        <title>Get Vaccinated</title>
+
+    </head>
+
+    <body>
+
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #001a4d">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/static/corona.png" alt="" width="50" height="50" class="d-inline-block align-center">
+                Death to Corona
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/riskassessment">Risk Assessment</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/getvaccinated">Get Vaccinated</a>
+                </li>
+            </ul>
+          </div>
+          </div>
+      </nav>
+
+      <div class="container">
+        <div class="location">
+            <h1>Find vaccination locations near you.</h1>
+        </div>
+      </div>
+
+      <div class="container">
+         <form action="/getvaccinated" method="post" class="location needs-validation" novalidate>
+            <input type="text" class="form-control" id="searchlocation" placeholder="Enter your postal code" name="location" style="width: 250px; text-align: center; radius: 7px" min="0" minlength="6" maxlength="6" onkeypress="return keyispressed(event)" required>
+            <div class="send">
+                <button type="submit" class="btn btn-dark geo" style="background-color: #001a4d"> Search</button>
+            </div>
+            <div class="invalid-feedback">
+                  Please input a postal code.
+            </div>
+            <div class="invalid">
+                <p styl>{{ invalid }}</p>
+            </div>
+
+         </form>
+      </div>
+
+      <script>
+
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          // Bootstrap 5.0 form-validation
+             (function () {
+
+             // Fetch all the forms we want to apply custom Bootstrap validation styles to
+             var forms = document.querySelectorAll('.needs-validation');
+
+             // Loop over them and prevent submission
+             Array.prototype.slice.call(forms)
+             .forEach(function (form) {
+             form.addEventListener('submit', function (event) {
+             if (!form.checkValidity()) {
+             event.preventDefault();
+             event.stopPropagation();
+             }
+             form.classList.add('was-validated');
+             }, false);
+             });
+             })();
+
+      </script>
+
+      <!-- JavaScript only to allow numerical input values -->
+      <!-- https://stackoverflow.com/questions/8282266/how-to-prevent-invalid-characters-from-being-typed-into-input-fields -->
+      <script>
+
+          function keyispressed(e){
+                var charval= String.fromCharCode(e.keyCode);
+                if(isNaN(charval)){
+                    return false;
+                }
+                return true;
+            }
+
+      </script>
+
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.0/ -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <!-- https://favicon.io/ -->
+        <link href="/static/favicon.ico" rel="icon">
+        <!-- link to styles.css -->
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- link to font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/5.0/ -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+        <title>Get Vaccinated</title>
+
+    </head>
+
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #001a4d">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/static/corona.png" alt="" width="50" height="50" class="d-inline-block align-center">
+                Death to Corona
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/riskassessment">Risk Assessment</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/getvaccinated">Get Vaccinated</a>
+                </li>
+            </ul>
+          </div>
+          </div>
+      </nav>
+
+      <div class="title">
+        <div class="container">
+          <h1>Vaccination drives near you.</h1>
+        </div>
+      </div>
+
+      <div class="container">
+
+        {% for row in info %}
+
+          <h3>{{ row.name }}</h1>
+          <p>{{ row.address }}</p>
+          <div class="dist">
+            <h5>{{ row.distance }} km away</h5><br>
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </body>
+</html>
