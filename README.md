@@ -9,6 +9,23 @@ Click [here](https://youtu.be/Qs_rJFs2Ewc) to view the youtube demo!
 ## About this app
 A simple web application using tools such as HTML, CSS, JavaScript, SQL as well as Python that lets a user perform a risk-assessment for the coronavirus as well as lookup the nearest vaccination drives given an input location. The main application was written in Python using a micro-web framework called Flask, which contains the functions `home`, which are the lines of code to allow the homepage to function, `riskAssessment`, which performs all the actions for the risk-assessment function, and `getVaccinated`, which performs all the actions for the get vaccinated function.
 
+## Technologies Used
+
+### Frameworks
+![](https://img.shields.io/badge/Backend_Framework-Flask-informational?style=for-the-badge&logo=flask&color=ababab)
+
+### Languages
+![](https://img.shields.io/badge/Language-Python3-informational?style=for-the-badge&logo=python&color=blue)
+![](https://img.shields.io/badge/Language-JavaScript-informational?style=for-the-badge&logo=javascript&color=ffdd00)
+![](https://img.shields.io/badge/Language-HTML5-informational?style=for-the-badge&logo=html5&color=ff6338)
+![](https://img.shields.io/badge/Language-CSS3-informational?style=for-the-badge&logo=css3&color=386aff)
+
+### Database
+![](https://img.shields.io/badge/Database-SQLite-informational?style=for-the-badge&logo=sqlite&color=57a5f2)
+
+### Libraries
+![](https://img.shields.io/badge/Libraries-Bootstrap-informational?style=for-the-badge&logo=bootstrap&color=7714a8)
+
 ## Function Definitions `app.py`
 ### Home
 
